@@ -1,4 +1,5 @@
 #using super, override, implicit, and altered
+#no use of __init__
 
 class Parent(object):
 
