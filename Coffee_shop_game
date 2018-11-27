@@ -1,0 +1,94 @@
+#This is the start of a game I am creating
+#I will be adding to this regularly
+#This will be incomplete, I do not recommend trying to run this until it is complete
+#(it will be very boring)
+
+
+class Scene(object):
+
+    def enter(self):
+        print("This scene is not yet configured")
+        print("Subclass it and implement enter().")
+        exit(1)
+
+class Engine(object):
+
+    def __init__(self, coffee_shop):
+        self.coffee_shop = coffee_shop
+
+    def play(self):
+        current_scene = self.coffee_shop.opening_scene()
+        final_scene = self.coffee_shop.next_scene('finished')
+
+        while current_scene != final_scene:
+            next_current_choice = current_scene.enter()
+            current_scene = self.coffee_shop.next_scene(next_current_choice)
+
+class AngeryCustomer(Scene):
+#Acts as an ENDGAME
+    comments = [
+            "How could you mess it up?",
+
+            "It's not that hard",
+
+            "You're such a theb!!",
+    ]
+
+    def enter(self):
+
+        print(AngeryCustomer.comments[randint(0, 2)])
+
+        exit(1)
+#important to exit or will be looping
+
+class Customer(Scene):
+
+     def enter(self):
+         print("I am a customer to your coffee shop")
+         print("What is on your menu?")
+
+
+class Barista(Scene):
+
+    def enter(self):
+        print("You are a barista in a coffee shop")
+        print("A customer has entered")
+        print("*Hi there, what is your name")
+        name = input("> ")
+        print(f"Great to meet you {name}")
+
+
+
+class CoffeeChoice(Scene):
+
+    def flatwhite(self):
+        print("You have a flatwhite.")
+
+    def americano(self):
+        print("You have an americano.")
+
+    def cortado(self):
+        print("You have a cortado.")
+
+    def latte(self):
+        print("You have a latte.")
+
+    def mocha(self):
+        print("You have a mocha.")
+
+choice = CoffeeChoice()
+print("You inform the customer that..")
+choice.flatwhite()
+choice.americano()
+choice.cortado()
+choice.latte()
+choice.mocha()
+
+coffee_choice = input("""You choose:
+> """)
+
+if coffee_choice == "flatwhite":
+    print("You have chosen a flatwhite")
+
+if coffee_choice == "americano":
+    print("Americano")
