@@ -2,7 +2,7 @@
 #I will be adding to this regularly
 #This will be incomplete, I do not recommend trying to run this until it is complete
 #(it will be very boring)
-
+#if you happen to come across this and you're curious, please feel free to leave comments; especially if I haven't quite figured it out yet
 
 class Scene(object):
 
@@ -31,6 +31,8 @@ class AngeryCustomer(Scene):
 
             "It's not that hard",
 
+            "I'm never coming here again!",
+
             "You're such a theb!!",
     ]
 
@@ -44,51 +46,75 @@ class AngeryCustomer(Scene):
 class Customer(Scene):
 
      def enter(self):
-         print("I am a customer to your coffee shop")
-         print("What is on your menu?")
+         print("\t*Hi Barista*")
+         print("\t*What is on your menu?*")
 
 
 class Barista(Scene):
 
     def enter(self):
-        print("You are a barista in a coffee shop")
+        print("You are a barista working in a coffee shop")
         print("A customer has entered")
-        print("*Hi there, what is your name")
+        print("\t*Hi there, what is your name*")
         name = input("> ")
         print(f"Great to meet you {name}")
 
+opening = Barista()
+opening.enter()
 
+response = Customer()
+response.enter()
 
 class CoffeeChoice(Scene):
 
     def flatwhite(self):
-        print("You have a flatwhite.")
+        print("Flat white")
 
     def americano(self):
-        print("You have an americano.")
+        print("Americano")
 
     def cortado(self):
-        print("You have a cortado.")
+        print("Cortado")
 
     def latte(self):
-        print("You have a latte.")
+        print("Latte")
 
     def mocha(self):
-        print("You have a mocha.")
+        print("Mocha")
 
 choice = CoffeeChoice()
-print("You inform the customer that..")
+print("You inform the customer that on the menu you have...")
 choice.flatwhite()
 choice.americano()
 choice.cortado()
 choice.latte()
 choice.mocha()
 
-coffee_choice = input("""You choose:
+#name = Barista().name()
+#Barista object has no 'name' attribute
+#Figure this out
+#will not run past this point
+
+coffee_choice = input(f"""The customer chooses:
 > """)
+#will be input() {name} chooses:
 
-if coffee_choice == "flatwhite":
-    print("You have chosen a flatwhite")
+if coffee_choice == "flat white":
+    print(f"You have chosen a {coffee_choice}")
+#put in a size scene here (would you like S, M, L)
+elif coffee_choice == "americano":
+    print(f"You have chosen a {coffee_choice}")
+#and here
+elif coffee_choice == "cortado":
+    print(f"You have chosen {coffee_choice}")
 
-if coffee_choice == "americano":
-    print("Americano")
+elif coffee_choice == "latte":
+    print(f"You have chosen {coffee_choice}")
+
+elif coffee_choice == "mocha":
+    print(f"Sorry, we have run out of {coffee_choice}")
+    print("Please choose something else")
+#Put a loop in here so it goes back to coffee_choice input()
+#if mocha is typed again maybe loop to AngeryCustomer?
+else:
+    print("We don't have that on the menu, please try again")
