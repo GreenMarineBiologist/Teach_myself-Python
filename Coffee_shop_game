@@ -2,7 +2,8 @@
 #I will be adding to this regularly
 #This will be incomplete, I do not recommend trying to run this until it is complete
 #(it will be very boring)
-#if you happen to come across this and you're curious, please feel free to leave comments; especially if I haven't quite figured it out yet
+#if you happen to come across this and you're curious, please feel free to leave comments
+#especially if I haven't quite figured it out yet
 
 class Scene(object):
 
@@ -61,7 +62,7 @@ class Barista(Scene):
 
 opening = Barista()
 opening.enter()
-
+# setting variable then calling on the class
 response = Customer()
 response.enter()
 
