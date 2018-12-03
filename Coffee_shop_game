@@ -62,9 +62,24 @@ class Barista(Scene):
 
 opening = Barista()
 opening.enter()
-# setting variable then calling on the class
+
 response = Customer()
 response.enter()
+
+class CoffeeSize (Scene):
+
+    print("We have 3 sizes of cup for your coffee")
+
+    def small(self):
+        print("Small")
+
+    def medium(self):
+        print("Medium")
+
+    def large(self):
+        print("Large")
+
+print (CoffeeSize)
 
 class CoffeeChoice(Scene):
 
@@ -117,5 +132,6 @@ elif coffee_choice == "mocha":
     print("Please choose something else")
 #Put a loop in here so it goes back to coffee_choice input()
 #if mocha is typed again maybe loop to AngeryCustomer?
+#or add class ANGERYBarista
 else:
     print("We don't have that on the menu, please try again")
