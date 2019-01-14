@@ -1,0 +1,128 @@
+class Coffee():
+    build = ""
+    bean = ""
+    size = ""
+    finished = False
+    coffee_types = ["flat white", "americano", "cortado", "latte", "mocha"]
+    bean_types = ["kenyan", "colombian", "costa rican", "madagascan"]
+    coffee_size = ["small", "medium", "large"]
+
+
+    def print_types(self):
+        for i in self.coffee_types:
+            print("\t"+i)
+
+    def print_b_types(self):
+        for i in self.bean_types:
+            print("\t" +i)
+
+    def print_coffee_size(self):
+        for i in self.coffee_size:
+            print("\t" +i)
+
+class Customer():
+    name = ""
+    coffee = None
+
+    def enter(self):
+        print("customer: Hi Barista")
+        print("customer: What is on your menu?")
+
+    def ask_for_menu(self):
+        print("customer: Hi Barista")
+        print("customer: What is on your menu?")
+
+    def leave(self):
+        #acts as an end
+      if self.coffee != "":
+          print("That isn't what I ordered!")
+          print("customer: Thanks retard, I hate you and everything this coffee chain represents.")
+          print("customer: I'm leaving a bad review on Google, Facebook, Yelp, and Linkedin.")
+
+
+    def __init__(self, name):
+      self.name = name
+
+    def __str__(self):
+      print(self.name)
+
+
+
+class Barista():
+    customer_name = ""
+    coffee = ""
+
+    def give_description(self):
+        print("You are a barista working in a coffee shop")
+
+    def customer_entry(self):
+        print("A customer has entered")
+        print("barista: Hi there, what is your name")
+        self.customer_name = input("(barista) customer name:> ")
+        print(f"barista: Great to meet you {self.customer_name}")
+
+    def create_coffee(self):
+        self.coffee = Coffee()
+        print("barista: here are the coffee types:")
+        #this tells the script to get the def (line 9)
+        self.coffee.print_types()
+
+        print("barista: and what beans would you like?")
+        self.coffee.print_b_types()
+        #telling to print the bean type list
+
+        print("barista: finally, the size?")
+        self.coffee.print_coffee_size()
+
+    def ask_for_coffee_type(self):
+        print(f"barista: What sort of coffee do you want then, {self.customer_name}?")
+        coffee_build = input("Coffee type:> ")
+        self.input_coffee_build(coffee_build)
+
+        bean_build = input("Bean type:> ")
+        self.input_bean_build(bean_build)
+
+        size_build = input("Size of coffee :>")
+        self.input_size_build(size_build)
+
+
+    def input_coffee_build(self, customer_coffee_preference):
+        if customer_coffee_preference.lower() in self.coffee.coffee_types:
+            self.coffee.build = customer_coffee_preference
+            self.coffee.finished = True
+
+    def input_bean_build(self, customer_bean_preference):
+        if customer_bean_preference.lower() in self.coffee.bean_types:
+            self.coffee.build = customer_bean_preference
+            self.coffee.finished = True
+
+    def input_size_build(self, customer_size_preference):
+        if customer_size_preference.lower() in self.coffee.coffee_size:
+            self.coffee.build = customer_size_preference
+            self.coffee.finished = True
+
+    def return_finished_coffee(self):
+      if self.coffee.finished == True:
+          return self.coffee
+      else:
+          print("coffee isn't finished")
+          return ""
+
+
+
+barista1 = Barista()
+barista1.give_description()
+barista1.customer_entry()
+
+customer_name = input("(customer) customer name:> ")
+customer1 = Customer(customer_name)
+customer1.ask_for_menu()
+
+barista1.create_coffee()
+
+# customer inputs cofee pref
+# barista replies yes or no
+barista1.ask_for_coffee_type()
+coffee = barista1.return_finished_coffee()
+customer1.coffee = coffee
+customer1.leave()
